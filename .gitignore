@@ -1,0 +1,20 @@
+# Godot-specific ignores
+.godot/
+
+# Godot 3-specific ignores (if applicable)
+.import/
+export_presets.cfg
+
+# Mono-specific ignores (if using C#)
+.mono/
+data_*/
+mono_project/
+
+# General build and temporary files
+*.tmp
+*.log
+
+# System/OS files
+.DS_Store
+Thumbs.db
+desktop.ini

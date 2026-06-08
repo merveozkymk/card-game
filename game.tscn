@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://devx3o78d4ke4"]
+
+[ext_resource type="Script" uid="uid://cmgdwjqd567xk" path="res://Game.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://djsre2xld6an2" path="res://GameUI.gd" id="2_e2o6t"]
+[ext_resource type="Theme" uid="uid://4y38f6u57b05" path="res://card_clash_theme.tres" id="3_feb5d"]
+
+[node name="Game" type="Node2D" unique_id=622008400]
+script = ExtResource("1_80nbo")
+
+[node name="LeftGrid" type="GridContainer" parent="." unique_id=401120855]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="RightGrid" type="GridContainer" parent="." unique_id=1255293539]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=1781897750]
+script = ExtResource("2_e2o6t")
+
+[node name="LevelWinPanel" type="Panel" parent="GameUI" unique_id=467313377]
+visible = false
+theme = ExtResource("3_feb5d")
+
+[node name="WinnerLabel" type="Label" parent="GameUI/LevelWinPanel" unique_id=1531256352]
+layout_mode = 0
+text = "1. Seviyeyi Oyuncu 1 Kazandı!"
+
+[node name="ContinueButton" type="Button" parent="GameUI/LevelWinPanel" unique_id=118784976]
+layout_mode = 0
+text = "Devam Et"
+
+[node name="QuitButton" type="Button" parent="GameUI/LevelWinPanel" unique_id=1375920920]
+layout_mode = 0
+text = "Oyunu Bitir"
+
+[node name="DevelopingPanel" type="Panel" parent="GameUI" unique_id=802028001]
+visible = false
+theme = ExtResource("3_feb5d")
+
+[node name="InfoLabel" type="Label" parent="GameUI/DevelopingPanel" unique_id=1979175660]
+layout_mode = 0
+text = "Diğer seviyeler geliştiriliyor..."
+
+[node name="DevQuitButton" type="Button" parent="GameUI/DevelopingPanel" unique_id=82842795]
+layout_mode = 0
+text = "Oyunu Bitir"
+
+[node name="MainMenu" type="Control" parent="GameUI" unique_id=443422618]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_feb5d")
+
+[node name="Background" type="ColorRect" parent="GameUI/MainMenu" unique_id=713323281]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.2520001
+anchor_bottom = 1.3560001
+offset_right = -0.30407715
+offset_bottom = 0.31195068
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08627451, 0.07058824, 0.09803922, 1)
+
+[node name="FloatingGrid" type="GridContainer" parent="GameUI/MainMenu" unique_id=1420922759]
+modulate = Color(1, 1, 1, 0.22)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rotation = 0.20943952
+columns = 6
+
+[node name="Header" type="HBoxContainer" parent="GameUI/MainMenu" unique_id=656414958]
+layout_mode = 0
+anchor_right = 1.0
+
+[node name="LogoLabel" type="Label" parent="GameUI/MainMenu/Header" unique_id=1704254983]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Card Clash"
+
+[node name="WelcomePanel" type="Panel" parent="GameUI/MainMenu" unique_id=2083481397]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameUI/MainMenu/WelcomePanel" unique_id=369438057]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="IconBox" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=1860520369]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7294118, 0.49411765, 0.95686275, 1)
+theme_override_font_sizes/font_size = 48
+text = "✦"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=1245959364]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Card Clash'e Hoş Geldiniz!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SubtitleLabel" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=114988021]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.80784315, 0.7647059, 0.827451, 1)
+theme_override_font_sizes/font_size = 14
+text = "Hafızanı test et, rakiplerini yen ve kart dünyasının şampiyonu ol!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CardPreviewContainer" type="HBoxContainer" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=1302745350]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftCard" type="Panel" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer" unique_id=1883292989]
+layout_mode = 2
+
+[node name="LText" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer/LeftCard" unique_id=1285858145]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "W
+A S D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MiddleCard" type="Panel" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer" unique_id=141304563]
+layout_mode = 2
+
+[node name="MText" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer/MiddleCard" unique_id=141304563]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.84313726, 0.7294118, 0.99607843, 1)
+theme_override_font_sizes/font_size = 32
+text = "⚔"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightCard" type="Panel" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer" unique_id=1893364367]
+layout_mode = 2
+
+[node name="RText" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/CardPreviewContainer/RightCard" unique_id=1124418862]
+layout_mode = 0
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "▲
+◀ ▼ ▶"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=1377352952]
+layout_mode = 2
+text = "Oyuna Başla"
+
+[node name="HowToPlayButton" type="Button" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=218277355]
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "Nasıl Oynanır?"
+
+[node name="FooterContainer" type="HBoxContainer" parent="GameUI/MainMenu/WelcomePanel/VBox" unique_id=213188834]
+layout_mode = 2
+alignment = 1
+
+[node name="Stat1" type="VBoxContainer" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer" unique_id=109326480]
+layout_mode = 2
+alignment = 1
+
+[node name="L1" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer/Stat1" unique_id=1030976880]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "4+"
+
+[node name="L2" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer/Stat1" unique_id=84431303]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.80784315, 0.7647059, 0.827451, 1)
+theme_override_font_sizes/font_size = 10
+text = "SEVİYE"
+
+[node name="Stat2" type="VBoxContainer" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer" unique_id=701117300]
+layout_mode = 2
+alignment = 1
+
+[node name="M1" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer/Stat2" unique_id=1694202686]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84313726, 0.7294118, 0.99607843, 1)
+theme_override_font_sizes/font_size = 16
+text = "1v1"
+
+[node name="M2" type="Label" parent="GameUI/MainMenu/WelcomePanel/VBox/FooterContainer/Stat2" unique_id=853490455]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.80784315, 0.7647059, 0.827451, 1)
+theme_override_font_sizes/font_size = 10
+text = "MODU"
+
+[node name="GlowCircle1" type="Panel" parent="GameUI/MainMenu/WelcomePanel" unique_id=1320502588]
+show_behind_parent = true
+layout_mode = 0
+
+[node name="GlowCircle2" type="Panel" parent="GameUI/MainMenu/WelcomePanel" unique_id=1576179881]
+show_behind_parent = true
+layout_mode = 0
+
+[node name="NameInputPanel" type="Panel" parent="GameUI/MainMenu" unique_id=168524672]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameUI/MainMenu/NameInputPanel" unique_id=83290499]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=726080277]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8666667, 0.7176471, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Oyuncu Bilgileri"
+horizontal_alignment = 1
+
+[node name="P1Label" type="Label" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=1667326581]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.80784315, 0.7647059, 0.827451, 1)
+text = "Oyuncu 1 Adı:"
+
+[node name="P1NameInput" type="LineEdit" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=786425258]
+layout_mode = 2
+placeholder_text = "Oyuncu 1"
+
+[node name="P2Label" type="Label" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=81535984]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.80784315, 0.7647059, 0.827451, 1)
+text = "Oyuncu 2 Adı:"
+
+[node name="P2NameInput" type="LineEdit" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=670236614]
+layout_mode = 2
+placeholder_text = "Oyuncu 2"
+
+[node name="BeginGameButton" type="Button" parent="GameUI/MainMenu/NameInputPanel/VBox" unique_id=206535193]
+layout_mode = 2
+text = "Maça Başla"
