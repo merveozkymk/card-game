@@ -855,7 +855,7 @@ func _on_continue_pressed() -> void:
 	if level_win_panel:
 		level_win_panel.visible = false
 		
-	var max_level = 3 if selected_game_mode == "reflex" else 4
+	var max_level = 3
 	if _current_level == max_level:
 		show_tournament_complete()
 	else:

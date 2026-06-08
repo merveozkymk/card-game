@@ -11,7 +11,7 @@ Godot 4.6 ile geliştirilmiş, iki oyuncunun aynı klavye üzerinden yerel (loca
     *   Her oyuncunun kendi ekran yarısında (split-screen) bağımsız kart desteleri bulunur.
     *   2 saniyelik başlangıç ezberleme süresinden sonra kartlar kapanır.
     *   Klasik hafıza oyunu kuralları geçerlidir: Aynı sembole sahip kartlar eşleştirilir.
-    *   Seviye ilerledikçe kart sayısı artar (12, 16, 20, 24 kart). Seviye 3'te kart yerleri zamanla kayar (shift).
+    *   Seviye ilerledikçe kart sayısı artar (12, 16, 20 kart). Seviye 3'te kart yerleri zamanla kayar (shift).
 *   **Refleks Modu (Reflex Mode):**
     *   Ortak bir alanda 40 adet açık kart (8x5 boyutunda) yer alır.
     *   Ekranın üst kısmında rastgele bir hedef sembol gösterilir.

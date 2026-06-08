@@ -170,7 +170,7 @@ func _generate_placeholders_if_needed(total_pairs: int) -> void:
 
 ## Loads and positions the grid setup for a level
 func start_level(level: int) -> void:
-	var max_level = 3 if game_mode == "reflex" else 4
+	var max_level = 3
 	if level > max_level:
 		return
 		
@@ -957,8 +957,7 @@ func _end_level(winner_player: int) -> void:
 	p1_tour_max_combo = max(p1_tour_max_combo, p1_level_max_combo)
 	p2_tour_max_combo = max(p2_tour_max_combo, p2_level_max_combo)
 	
-	# Last level evaluations (moved after score accumulation)
-	var max_level = 3 if game_mode == "reflex" else 4
+	var max_level = 3
 	if current_level >= max_level:
 		var final_winner = 1 if p1_tour_score > p2_tour_score else (2 if p2_tour_score > p1_tour_score else 0)
 		emit_signal("game_completed", final_winner)
