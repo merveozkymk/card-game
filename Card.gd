@@ -133,9 +133,9 @@ func _draw() -> void:
 		glow_style.set_border_width_all(6)
 		
 		if highlight_player == 1:
-			# Player 1: Mor (#af93d4) neon inner glow
-			glow_style.border_color = Color.from_string("#af93d4", Color.MAGENTA)
-			glow_style.shadow_color = Color.from_string("#af93d4", Color.BLACK)
+			# Player 1: Bright Electric Purple (#bf00ff) neon inner glow
+			glow_style.border_color = Color.from_string("#bf00ff", Color.MAGENTA)
+			glow_style.shadow_color = Color.from_string("#bf00ff", Color.BLACK)
 			glow_style.shadow_size = 6
 			draw_style_box(glow_style, card_rect)
 		elif highlight_player == 2:
@@ -145,9 +145,9 @@ func _draw() -> void:
 			glow_style.shadow_size = 6
 			draw_style_box(glow_style, card_rect)
 		elif highlight_player == 3:
-			# Player 1 and Player 2: Dual selection (Outer Orchid, Inner Yellow)
-			glow_style.border_color = Color.from_string("#af93d4", Color.MAGENTA)
-			glow_style.shadow_color = Color.from_string("#af93d4", Color.BLACK)
+			# Player 1 and Player 2: Dual selection (Outer Bright Purple, Inner Yellow)
+			glow_style.border_color = Color.from_string("#bf00ff", Color.MAGENTA)
+			glow_style.shadow_color = Color.from_string("#bf00ff", Color.BLACK)
 			glow_style.shadow_size = 6
 			draw_style_box(glow_style, card_rect)
 			

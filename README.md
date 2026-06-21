@@ -1,4 +1,4 @@
-# 🎴 Card Clash - 1v1 Split-Screen Kart Eşleştirme Oyunu
+# 🎴 Found It - 1v1 Split-Screen Kart Eşleştirme Oyunu
 
 Godot 4.6 ile geliştirilmiş, iki oyuncunun aynı klavye üzerinden yerel (local) olarak rekabet ettiği, modern estetik tasarıma ve yenilikçi prosedürel ses teknolojisine sahip dinamik bir kart eşleştirme ve refleks oyunudur.
 
@@ -18,7 +18,7 @@ Godot 4.6 ile geliştirilmiş, iki oyuncunun aynı klavye üzerinden yerel (loca
     *   Oyuncular kendi imleçleriyle bu hedef sembolü en hızlı şekilde bulmaya çalışır.
     *   Yanlış seçim yapan oyuncu 1.5 saniye donma cezası alır.
     *   **Seviye 2 (Monokrom):** Tüm renkler kaybolur, oyuncuların sadece şekil geometrisine odaklanması gerekir.
-    *   **Seviye 3 (Hafıza Refleksi):** 3 adet hedef sembol 3 saniyeliğine gösterilir ve ardından gizlenir. Oyuncuların bu sembolleri 10 saniye içinde hatırlayıp bulması gerekir.
+    *   **Seviye 3 (Hafıza Refleksi):** 3 adet hedef sembol 2 saniyeliğine gösterilir ve ardından gizlenir. Oyuncuların bu sembolleri 10 saniye içinde hatırlayıp bulması gerekir.
     *   Her doğru eşleşmede tüm kartlar yeniden karıştırılarak (shuffle) heyecan üst düzeyde tutulur.
 
 ### 2. Premium Prosedürel Görsel Tasarım

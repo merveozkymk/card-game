@@ -33,6 +33,8 @@ var target_card_id: int = -1
 var level3_timer: Timer
 var level3_target_ids: Array = []
 var level3_generation: int = 0
+var level3_p1_matches: int = 0
+var level3_p2_matches: int = 0
 
 # Players' currently flipped cards
 var p1_flipped_cards: Array = []
@@ -667,54 +669,106 @@ func _select_card_reflex(player_num: int) -> void:
 		card.disabled = true
 		card.animate_match()
 		
-		# If level 3, remove the matched shape from the active target list
 		if current_level == 3:
 			for target_id in level3_target_ids:
 				if (target_id % 30) == clicked_shape:
 					level3_target_ids.erase(target_id)
 					break
-		
-		var score_add = 10
-		if player_num == 1:
-			p1_score += score_add
-			p1_level_score += score_add
-		else:
-			p2_score += score_add
-			p2_level_score += score_add
-			
-		if game_ui:
-			update_scores_on_ui()
-			game_ui.flash_score_bubble(player_num)
-			
-		# Check level completion
-		var unmatched_cards = []
-		for c in p1_cards:
-			if not c.is_matched:
-				unmatched_cards.append(c)
+			if player_num == 1:
+				level3_p1_matches += 1
+			else:
+				level3_p2_matches += 1
 				
-		if unmatched_cards.size() == 0:
-			_end_level(player_num)
-		elif unmatched_cards.size() == 1:
-			# Auto-match the last remaining card and end the level immediately!
-			var last_card = unmatched_cards[0]
-			last_card.is_matched = true
-			last_card.disabled = true
-			last_card.animate_match()
-			
-			# Award points for the final card to the player who made the match
+			if level3_target_ids.size() == 0:
+				var score_p1 = level3_p1_matches * 10
+				var score_p2 = level3_p2_matches * 10
+				if score_p1 > 0:
+					p1_score += score_p1
+					p1_level_score += score_p1
+					if game_ui:
+						game_ui.flash_score_bubble(1)
+				if score_p2 > 0:
+					p2_score += score_p2
+					p2_level_score += score_p2
+					if game_ui:
+						game_ui.flash_score_bubble(2)
+						
+				level3_p1_matches = 0
+				level3_p2_matches = 0
+				
+				if game_ui:
+					update_scores_on_ui()
+					
+				# Check level completion
+				var unmatched_cards = []
+				for c in p1_cards:
+					if not c.is_matched:
+						unmatched_cards.append(c)
+						
+				if unmatched_cards.size() == 0:
+					_end_level(player_num)
+				elif unmatched_cards.size() == 1:
+					# Auto-match the last remaining card and end the level immediately!
+					var last_card = unmatched_cards[0]
+					last_card.is_matched = true
+					last_card.disabled = true
+					last_card.animate_match()
+					
+					# Award points for the final card to the player who made the match
+					if player_num == 1:
+						p1_score += 10
+						p1_level_score += 10
+					else:
+						p2_score += 10
+						p2_level_score += 10
+					if game_ui:
+						update_scores_on_ui()
+					_end_level(player_num)
+				else:
+					_select_new_target_shape()
+					_shuffle_grid_reflex()
+		else:
+			# Levels 1 and 2
+			var score_add = 10
 			if player_num == 1:
 				p1_score += score_add
 				p1_level_score += score_add
 			else:
 				p2_score += score_add
 				p2_level_score += score_add
+				
 			if game_ui:
 				update_scores_on_ui()
+				game_ui.flash_score_bubble(player_num)
 				
-			_end_level(player_num)
-		else:
-			_select_new_target_shape()
-			_shuffle_grid_reflex()
+			# Check level completion
+			var unmatched_cards = []
+			for c in p1_cards:
+				if not c.is_matched:
+					unmatched_cards.append(c)
+					
+			if unmatched_cards.size() == 0:
+				_end_level(player_num)
+			elif unmatched_cards.size() == 1:
+				# Auto-match the last remaining card and end the level immediately!
+				var last_card = unmatched_cards[0]
+				last_card.is_matched = true
+				last_card.disabled = true
+				last_card.animate_match()
+				
+				# Award points for the final card to the player who made the match
+				if player_num == 1:
+					p1_score += score_add
+					p1_level_score += score_add
+				else:
+					p2_score += score_add
+					p2_level_score += score_add
+				if game_ui:
+					update_scores_on_ui()
+				_end_level(player_num)
+			else:
+				_select_new_target_shape()
+				_shuffle_grid_reflex()
 	else:
 		AudioManager.play_cross()
 		# Incorrect match! 1.5s freeze penalty
@@ -744,6 +798,10 @@ func _select_new_target_shape() -> void:
 	var is_monochrome = (current_level == 2)
 	
 	if current_level == 3:
+		level3_p1_matches = 0
+		level3_p2_matches = 0
+		can_play = false
+		
 		level3_generation += 1
 		var current_gen = level3_generation
 		
@@ -772,12 +830,13 @@ func _select_new_target_shape() -> void:
 		if game_ui:
 			game_ui.update_target_shape(level3_target_ids, false)
 			
-		# Show for 3 seconds then hide
-		await get_tree().create_timer(3.0).timeout
+		# Show for 2 seconds then hide
+		await get_tree().create_timer(2.0).timeout
 		
-		if current_gen == level3_generation and current_level == 3 and can_play:
+		if current_gen == level3_generation and current_level == 3 and game_mode == "reflex":
 			if game_ui:
 				game_ui.hide_target_shapes()
+			can_play = true
 			if is_instance_valid(level3_timer):
 				level3_timer.start(10.0)
 	else:
@@ -1125,7 +1184,7 @@ func _start_shift_timer() -> void:
 
 func _reset_shift_timer() -> void:
 	if is_instance_valid(shift_timer) and current_level == 3 and can_play:
-		var wait_time = randf_range(10.0, 15.0)
+		var wait_time = randf_range(9.0, 14.0)
 		shift_timer.start(wait_time)
 
 func _stop_shift_timer() -> void:

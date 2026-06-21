@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Yeni Oyun Projesi"
+config/name="Found It"
 run/main_scene="uid://devx3o78d4ke4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"

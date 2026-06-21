@@ -515,10 +515,10 @@ func _setup_arena_ui() -> void:
 	divider.position = Vector2(viewport_size.x / 2.0 - 2, 0)
 	arena_ui.add_child(divider)
 	
-	# 2. Player 1 (Left Area) Border Accent Line (Muted Orchid)
+	# 2. Player 1 (Left Area) Border Accent Line (Electric Purple)
 	var p1_line = ColorRect.new()
 	p1_line.name = "P1Line"
-	p1_line.color = Color.from_string("#af93d4", Color.WHITE)
+	p1_line.color = Color.from_string("#bf00ff", Color.WHITE)
 	p1_line.custom_minimum_size = Vector2(viewport_size.x / 2.0, 4)
 	p1_line.size = Vector2(viewport_size.x / 2.0, 4)
 	p1_line.position = Vector2(0, 0)
@@ -533,7 +533,7 @@ func _setup_arena_ui() -> void:
 	p2_line.position = Vector2(viewport_size.x / 2.0, 0)
 	arena_ui.add_child(p2_line)
 	
-	# 4. Player 1 Score Bubble (circular panel, 4px orchid border)
+	# 4. Player 1 Score Bubble (circular panel, 4px purple border)
 	p1_score_bubble = Panel.new()
 	p1_score_bubble.name = "P1ScoreBubble"
 	p1_score_bubble.custom_minimum_size = Vector2(160, 160)
@@ -543,9 +543,9 @@ func _setup_arena_ui() -> void:
 	var style1 = StyleBoxFlat.new()
 	style1.bg_color = Color.from_string("#221e25", Color.BLACK)
 	style1.set_border_width_all(4)
-	style1.border_color = Color.from_string("#af93d4", Color.WHITE)
+	style1.border_color = Color.from_string("#bf00ff", Color.WHITE)
 	style1.set_corner_radius_all(9999)
-	style1.shadow_color = Color.from_string("#af93d4", Color.BLACK)
+	style1.shadow_color = Color.from_string("#bf00ff", Color.BLACK)
 	style1.shadow_color.a = 0.2
 	style1.shadow_size = 10
 	p1_score_bubble.add_theme_stylebox_override("panel", style1)
@@ -2317,7 +2317,7 @@ func _setup_how_to_play_panel() -> void:
 	
 	# Introduction
 	var intro = Label.new()
-	intro.text = "Card Clash, hafıza ve hızı bir araya getiren 1v1 rekabetçi bir kart oyunudur. Oyunda iki farklı oyun modu bulunmaktadır:"
+	intro.text = "Found It, hafıza ve hızı bir araya getiren 1v1 rekabetçi bir kart oyunudur. Oyunda iki farklı oyun modu bulunmaktadır:"
 	intro.autowrap_mode = TextServer.AUTOWRAP_WORD
 	intro.add_theme_font_size_override("font_size", 16)
 	content_vbox.add_child(intro)
@@ -2355,7 +2355,7 @@ func _setup_how_to_play_panel() -> void:
 	content_vbox.add_child(reflex_title)
 	
 	var reflex_desc = Label.new()
-	reflex_desc.text = "• Ekranın ortasında ortak 40 karttan oluşan tek bir grid bulunur.\n• Oyuncular aynı anda (gerçek zamanlı olarak) bu grid üzerinde gezinir.\n• Ekranın en üstünde hedeflenen şekil gösterilir. Bu şekli ilk bulan puanı (10 Puan) kazanır!\n• Yanlış karta basarsanız 1.5 saniye boyunca hareket edemezsiniz (Donma Cezası).\n• Eşleşme sağlandığında yerdeki kart kaybolur, kalan kartlar karıştırılır ve yeni hedef belirlenir.\n• Seviye 2 Kuralı: Mor kartların üzerindeki şekiller renksiz (beyaz) çizilir, dikkatli olun!\n• Seviye 3 Kuralı: Üstte 3 hedef şekil gösterilir ve 3 saniye sonra gizlenir. 10 saniye içinde bulmaya çalışmalısınız. Süre biterse veya hedefler bulunursa yeni hedefler belirlenip grid karıştırılır."
+	reflex_desc.text = "• Ekranın ortasında ortak 40 karttan oluşan tek bir grid bulunur.\n• Oyuncular aynı anda (gerçek zamanlı olarak) bu grid üzerinde gezinir.\n• Ekranın en üstünde hedeflenen şekil gösterilir. Bu şekli ilk bulan puanı (10 Puan) kazanır!\n• Yanlış karta basarsanız 1.5 saniye boyunca hareket edemezsiniz (Donma Cezası).\n• Eşleşme sağlandığında yerdeki kart kaybolur, kalan kartlar karıştırılır ve yeni hedef belirlenir.\n• Seviye 2 Kuralı: Mor kartların üzerindeki şekiller renksiz (beyaz) çizilir, dikkatli olun!\n• Seviye 3 Kuralı: Üstte 3 hedef şekil gösterilir ve 2 saniye sonra gizlenir. 10 saniye içinde bulmaya çalışmalısınız. Süre biterse veya hedefler bulunursa yeni hedefler belirlenip grid karıştırılır."
 	reflex_desc.autowrap_mode = TextServer.AUTOWRAP_WORD
 	reflex_desc.add_theme_font_size_override("font_size", 14)
 	content_vbox.add_child(reflex_desc)
